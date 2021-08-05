@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>ImgPure</title>
+        <link rel="stylesheet" href="./css/imgpure.css"/>
+    </head>
+    <body style="background-color:darkgray">
+        <img src="./jacket.jpg" id="myimg" hidden/>
+        <center>
+            <div class="imgpurearea" oncontextmenu="false">
+                <h4>Edit Image</h4>
+                <div class="imgpurerow">
+                   <div class="flex-container">
+                       <div class="flex-item">
+                        <img class="imgpurecanvas" src="./jacket.jpg" id="imgpureimg" /> 
+                        <br/>
+                        <!--Saturation-->
+                        <span class="imgpuretxt">Saturation</span>
+                        <div class="range">
+                            <div class="field">
+                                <div class="value left">0</div>
+                                    <input class="imgpure-range" id="saturation" type="range" min="0" max="500" value="100" steps="1">
+                                <div class="value right">100%</div>
+                            </div>
+                        </div>
+                        <!--Sepia-->
+                        <span class="imgpuretxt">Sepia</span>
+                        <div class="range">
+                            <div class="field">
+                                <div class="value left">0</div>
+                                    <input class="imgpure-range" id="sepia" type="range" min="0" max="100" value="0" steps="1">
+                                <div class="value right">100%</div>
+                            </div>
+                        </div>
+
+                       </div>
+                       <div class="flex-item">
+                           <!--Blur-->
+                            <span class="imgpuretxt">Blur</span>
+                            <div class="range">
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                        <input class="imgpure-range" id="blur" type="range" min="0" max="100" value="0" steps="1">
+                                    <div class="value right">100</div>
+                                </div>
+                            </div>
+                            <!--Brightness-->
+                            <span class="imgpuretxt">Brightness</span>
+                            <div class="range">
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                        <input class="imgpure-range" id="brightness" type="range" min="0" max="500" value="100" steps="1">
+                                    <div class="value right">100%</div>
+                                </div>
+                            </div>
+                            <!--Contrast-->
+                            <span class="imgpuretxt">Contrast</span>
+                            <div class="range">
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                        <input class="imgpure-range" id="contrast" type="range" min="0" max="500" value="100" steps="1">
+                                    <div class="value right">100%</div>
+                                </div>
+                            </div>
+                            <!--GrayScale-->
+                            <span class="imgpuretxt">GrayScale</span>
+                            <div class="range">
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                        <input class="imgpure-range" id="grayscale" type="range" min="0" max="100" value="0" steps="1">
+                                    <div class="value right">100%</div>
+                                </div>
+                            </div>
+                            <!--Hue Rotation-->
+                            <span class="imgpuretxt">Hue Rotation</span>
+                            <div class="range">
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                        <input class="imgpure-range" id="hue_rotate" type="range" min="0" max="360" value="0" steps="1">
+                                    <div class="value right">100deg</div>
+                                </div>
+                            </div>
+                            <!--Invert Color-->
+                            <span class="imgpuretxt">Invert Color</span>
+                            <div class="range">
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                        <input class="imgpure-range" id="color_inverse" type="range" min="0" max="100" value="0" steps="1">
+                                    <div class="value right">100%</div>
+                                </div>
+                            </div>
+                            <!--Opacity-->
+                            <span class="imgpuretxt">Opacity</span>
+                            <div class="range">
+                                <div class="field">
+                                    <div class="value left">0</div>
+                                        <input class="imgpure-range" id="opacity" type="range" min="0" max="100" value="100" steps="1">
+                                    <div class="value right">100</div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <span class="imgpurebtns">
+                    <button class="imgpure-green imgpurebtn">Confirm</button>
+                    <button class="imgpure-red imgpurebtn">Cancel</button>
+                </span>
+            </div>
+        </center>
+    <script src="./js/jquery-3.0.0.js"></script>
+    <script>
+        $(document).ready(function() {
+            $(".imgpure-range").change(addFilter).mousemove(addFilter);
+        });
+
+        function addFilter() {
+            var opacity = $("#opacity").val();
+            var saturation = $("#saturation").val();
+            var sepia = $("#sepia").val();
+            var brightness = $("#brightness").val();
+            var blur = $("#blur").val();
+            var color_inverse = $("#color_inverse").val();
+            var contrast = $("#contrast").val();
+            var grayscale = $("#grayscale").val();
+            var hue_rotate = $("#hue_rotate").val();
+            $("#imgpureimg").css("-webkit-filter", "blur("+ blur +"px) grayscale("+ grayscale +"%) brightness("+brightness+"%) sepia("+sepia +"%) opacity("+opacity+"%) contrast("+contrast +"%) hue-rotate("+hue_rotate+"deg) invert("+ color_inverse +"%) saturate("+saturation+"%) ")
+            $("#imgpureimg").css("filter", "blur("+ blur +"px) grayscale("+ grayscale +"%) brightness("+brightness+"%) sepia("+sepia +"%) opacity("+opacity+"%) contrast("+contrast +"%) hue-rotate("+hue_rotate+"deg) invert("+ color_inverse +"%) saturate("+saturation+"%) ")
+        }
+
+        function resetFilters() {
+
+        }
+    </script>
+    </body>
+</html>
